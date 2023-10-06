@@ -1,0 +1,309 @@
+﻿@model factura.Models.FacturaDto
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{
+    var msjError = ViewBag.msjError as string;
+}
+@{
+    var msjExito = ViewBag.msjExito as string;
+}
+
+
+
+<!--Inicio tabla-->
+ 
+
+<div style="display: grid;place-items: center; width: 100%; overflow: hidden;margin-top: 10PX;">
+
+    <h1 class="elegant-title">LISTA DE PRODUCUTOS PARA FACTURAR</h1>
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr;">
+        <div >
+            <a asp-action="Index">Regresar</a>
+        </div>
+        <div>
+            <button type="button" id="openModalBtn" class="btn " style="background-color:green; color:white;">
+                Agregar producto
+            </button>
+        </div>
+        <div style="margin-left: 12px;">
+            @if (ViewBag.FacturaInfo != null)
+            {
+                <form asp-action="Create" id="miFormulario">
+                    <input type="hidden" id="enviar" name="enviar" value="1" />
+
+                    <button type="submit" value="Create" class="btn " style="background-color:green; color:white;">
+                        Guardar factura
+                    </button>
+                </form>
+            }
+            
+        </div>
+        
+    </div>
+
+  
+    <div class="character-list-container" style="width: 60%;">
+
+        @if (!string.IsNullOrEmpty(msjExito))
+        {
+            <div class="alert alert-success">@msjExito</div>
+        }
+        @if (!string.IsNullOrEmpty(msjError))
+        {
+            <div class="alert alert-danger">@msjError</div>
+        }
+        <table>
+            <thead>
+                <tr>
+                    <th>Código Proucto</th>
+                    <th>Precio unitario</th>
+                    <th>Cantidad</th>
+                    <th>Porcentaje de descuento</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.FacturaInfo != null)
+                {
+                    @foreach (var factura in ViewBag.FacturaInfo)
+                    {
+                        <tr>
+                            <td>@factura.ProductoId</td>
+                            <td>@factura.Precio</td>
+                            <td>@factura.Cantidad</td>
+                            <td>@factura.PorcentajeDescuento %</td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+   
+</div>
+
+
+<!-- Ventana modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <!-- Contenido de la ventana modal -->
+        <div class="modal-header">
+            <h4 class="modal-title">Formulario de producto </h4>
+           
+        </div>
+        <div class="modal-body">
+            <form asp-action="Create" id="miFormulario">
+                <div class="form-product">
+                    <div class="column-one">
+                        <input type="hidden" id="enviar" name="enviar" value="0" />
+
+                        @if (ViewBag.FacturaInfo == null){
+                        <div class="form-group">
+                            <label asp-for="DocumentoCliente" class="control-label"> Documento del cliente:</label>
+                            <input asp-for="DocumentoCliente" class="form-control" />
+                            <!--<span asp-validation-for="DocumentoCliente" class="text-danger"></span>-->
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NombreCliente" class="control-label">Nombre del cliente:</label>
+                            <input asp-for="NombreCliente" class="form-control" />
+
+                        </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="FechaCompra" class="control-label">Fecha de compra:</label>
+                                <input asp-for="FechaCompra" class="form-control" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Forma de pago:</label>
+                            <select asp-for="FormaPago" class="form-control" id="FormaPago" name="FormaPago">
+                                <option value="">Seleccione</option>
+                                <option value="Efectivo">Efectivo</option>
+                                <option value="NEQUI">NEQUI</option>
+
+                            </select>
+                        </div>
+                        }
+                       
+
+                        <div class="form-group">
+                            <label class="control-label">Productos:</label>
+
+                            <select asp-for="ProductoId" class="form-control" id="ProductoId" name="ProductoId">
+                                <option value="">Seleccione un producto</option>
+                                @if (ViewBag.Productos != null && ViewBag.Productos.Count > 0)
+                                {
+                                    foreach (var producto in ViewBag.Productos)
+                                    {
+                                        <option value="@producto.IdProducto">@producto.IdProducto -- @producto.Producto1</option>
+                                    }
+                                }
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="column-two">
+                        <div class="form-group">
+                            <label asp-for="Precio" class="control-label">Precio:</label>
+                            <input asp-for="Precio" type="number" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Cantidad" class="control-label">Cantidad:</label>
+                            <input asp-for="Cantidad" type="number" class="form-control" />
+                        </div>
+                        @if (ViewBag.FacturaInfo == null)
+                        {
+                            <div class="form-group">
+                                <label asp-for="NumeroFactura" class="control-label">Número de factura:</label>
+                                <input asp-for="NumeroFactura" class="form-control" />
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <label asp-for="PorcentajeDescuento" class="control-label">Porcentaje de descuento:</label>
+                            <input asp-for="PorcentajeDescuento"  type="number" class="form-control" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeModalBtn" class="btn close" style="background-color:red;color:white">Cerrar</button>
+                    <button type="submit" value="Create" id="idGuardar" class="btn" style="background-color:green;color:white">Guardar</button>
+                </div>
+        </form>
+           
+          
+        </div>
+        
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    document.getElementById("openModalBtn").addEventListener("click", function () {
+        document.getElementById("myModal").style.display = "block";
+    });
+    document.getElementById("idGuardar").addEventListener("click", function () {
+        document.getElementById("myModal").style.display = "block";
+    });
+
+    document.getElementById("closeModalBtn").addEventListener("click", function () {
+        document.getElementById("myModal").style.display = "none";
+    });
+    document.getElementById("clearForm").addEventListener("click", function () {
+ 
+        var formulario = document.getElementById("miFormulario");
+
+        formulario.reset();
+    });
+
+
+</script>
+
+    <style>
+    label {
+        display: inline-block;
+        float: left;
+    }
+
+    .modal-title {
+        margin: auto;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        height:500px; 
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+    }
+
+    .modal-content {
+        text-align: center;
+        border: none !important;
+    }
+
+    .modal-header {
+        background-color: white;
+        padding: 10px;
+        border: none !important;
+    }
+
+    .modal-footer {
+        background-color: white;
+        padding: 10px;
+        text-align: right;
+        border: none !important;
+    }
+
+    .form-product{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:25px;
+        
+    }
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+    .table-row {
+        transition: background-color 0.2s;
+        cursor: pointer;
+    }
+
+        .table-row:nth-child(even) {
+            background-color: rgb(204, 212, 240);
+        }
+
+  
+ 
+        
+
+    .character-list-container {
+        background-color: rgb(255, 255, 255);
+        max-height: 400px;
+        overflow-y: auto;
+        margin-top: 30px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+    }
+
+        
+
+    .elegant-title {
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 26px;
+        font-weight: 400;
+        color: #333;
+        text-align: center;
+        margin-top: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-top: 130px;
+      
+    }
+
+
+    </style>

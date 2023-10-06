@@ -1,0 +1,92 @@
+﻿@model factura.Models.Factura
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+ 
+<h4>Edictar Factura</h4>
+<hr />
+<div  >
+    <div >
+      
+        <form asp-action="Edit">
+            <div class="form-product">
+                <div class="column-one">
+                    <div class="form-group">
+                        <label asp-for="DocumentoCliente" class="control-label"> Documento del cliente</label>
+                        <input asp-for="DocumentoCliente" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NombreCliente" class="control-label"> Nombre del cliente</label>
+                        <input asp-for="NombreCliente" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Fecha" class="control-label">Fecha de compra</label>
+                        <input asp-for="Fecha" class="form-control" />
+
+                    </div>
+                 
+                    <div class="form-group">
+                        <label class="control-label">Forma de pago:</label>
+                        <select asp-for="TipodePago" class="form-control" id="TipodePago" name="TipodePago">
+                            <option value="">Seleccione</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="NEQUI">NEQUI</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="column-two">
+                        <input type="hidden" asp-for="IdFactura" />
+                   
+                        <input type="hidden" asp-for="NumeroFactura"   />
+ 
+                        
+                        <input type="hidden"  asp-for="Subtotal" />
+                    
+                        
+                        <input type="hidden" asp-for="Descuento"  />
+ 
+                        
+                        <input type="hidden" asp-for="Iva"   />
+ 
+                       
+                        <input type="hidden"   asp-for="TotalDescuento"  />
+ 
+                        <input type="hidden" asp-for="TotalImpuesto"  />
+ 
+                       
+                        <input type="hidden" asp-for="Total"/>
+
+                  
+                </div>
+            </div>
+           
+            <div class="form-group">
+                
+                <button type="submit" value="Save" class="btn " style="background-color:green; color:white;">
+                    Guardar factura
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+ <style>
+    .form-product {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+</style>

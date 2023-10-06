@@ -1,0 +1,2 @@
+bd es un backup de la base de datos por favor debes importarlo y  y llama la base de datos
+t_facuras
