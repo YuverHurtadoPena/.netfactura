@@ -11,20 +11,24 @@
     <thead>
         <tr>
             <th>
-                Número Factura
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
-               Metodo de Pago
-            </th>
-            <th>
-                 Documento Cliente
+                Número Factura
             </th>
             <th>
                 Nombre Cliente
             </th>
+            <th>
+                Documento Cliente
+            </th>
+            
+           
+            
+            <th>
+               Metodo de Pago
+            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Subtotal)
             </th>
@@ -49,21 +53,23 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroFactura)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroFactura)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocumentoCliente)
+                </td>
+ 
             <td>
                 @Html.DisplayFor(modelItem => item.TipodePago)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DocumentoCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCliente)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Subtotal)
             </td>
