@@ -1,4 +1,16 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿document.getElementById("openModalBtn").addEventListener("click", function () {
+    document.getElementById("myModal").style.display = "block";
+});
+document.getElementById("idGuardar").addEventListener("click", function () {
+    document.getElementById("myModal").style.display = "block";
+});
 
-// Write your JavaScript code.
+document.getElementById("closeModalBtn").addEventListener("click", function () {
+    document.getElementById("myModal").style.display = "none";
+});
+document.getElementById("clearForm").addEventListener("click", function () {
+
+    var formulario = document.getElementById("miFormulario");
+
+    formulario.reset();
+});

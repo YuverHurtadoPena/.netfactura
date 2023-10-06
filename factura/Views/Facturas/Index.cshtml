@@ -3,47 +3,45 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
+ 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear factura</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NumeroFactura)
+                 Numero Factura
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipodePago)
+               Metodo de Pago
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DocumentoCliente)
+                 Documento Cliente
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NombreCliente)
+                Nombre Cliente
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Subtotal)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descuento)
+               Descuento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Iva)
+                Iva %
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TotalDescuento)
+              Total descuento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TotalImpuesto)
+                 Total impuestos
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Total)
+               Total
             </th>
             <th></th>
         </tr>
@@ -85,9 +83,9 @@
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdFactura">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdFactura">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdFactura">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdFactura">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdFactura">Detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdFactura">Borrar</a>
             </td>
         </tr>
 }
