@@ -4,82 +4,85 @@
     ViewData["Title"] = "Details";
 }
 
-<div>
+<div >
     <h4>Detalle Factura</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            Fecha
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Fecha)
-        </dd>
-        <dt class = "col-sm-2">
-            Número Factura
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NumeroFactura)
-        </dd>
-        <dt class="col-sm-2">
-            Nombre Cliente
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NombreCliente)
-        </dd>
-        <dt class="col-sm-2">
-            Documento Cliente
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DocumentoCliente)
-        </dd>
-       
-       
-        <dt class = "col-sm-2">
-            Método de pago
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TipodePago)
-        </dd>
-     
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Subtotal)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Subtotal)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descuento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descuento)%
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Iva)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Iva)%
-        </dd>
-        <dt class = "col-sm-2">
-             Total Descuento
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalDescuento)
-        </dd>
-        <dt class = "col-sm-2">
-             Total Impuesto
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalImpuesto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Total)
-        </dd>
-    </dl>
+    <div style="display: grid; place-items:center;">
+        <dl class="row">
+            <dt class="col-sm-2">
+                Fecha
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
+            <dt class="col-sm-2">
+                Número Factura
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NumeroFactura)
+            </dd>
+            <dt class="col-sm-2">
+                Nombre Cliente
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NombreCliente)
+            </dd>
+            <dt class="col-sm-2">
+                Documento Cliente
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DocumentoCliente)
+            </dd>
+
+
+            <dt class="col-sm-2">
+                Método de pago
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TipodePago)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Subtotal)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Subtotal)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Descuento)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Descuento)%
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Iva)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Iva)%
+            </dd>
+            <dt class="col-sm-2">
+                Total Descuento
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TotalDescuento)
+            </dd>
+            <dt class="col-sm-2">
+                Total Impuesto
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TotalImpuesto)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Total)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Total)
+            </dd>
+        </dl>
+    </div>
+   
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.IdFactura">Editar</a> |
-    <a asp-action="Index">Regrear</a>
+    <a asp-action="Index">Regresar</a>
 </div>

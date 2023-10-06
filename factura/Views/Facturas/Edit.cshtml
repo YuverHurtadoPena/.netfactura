@@ -7,7 +7,7 @@
  
 <h4>Editar Factura</h4>
 <hr />
-<div  >
+<div  style="display:grid; place-items:center">
     <div >
       
         <form asp-action="Edit">
@@ -23,12 +23,15 @@
                         <input asp-for="NombreCliente" class="form-control" />
 
                     </div>
+                  
+                </div>
+                <div class="column-two">
                     <div class="form-group">
                         <label asp-for="Fecha" class="control-label">Fecha de compra</label>
                         <input asp-for="Fecha" class="form-control" />
 
                     </div>
-                 
+
                     <div class="form-group">
                         <label class="control-label">Forma de pago:</label>
                         <select asp-for="TipodePago" class="form-control" id="TipodePago" name="TipodePago">
@@ -38,8 +41,6 @@
 
                         </select>
                     </div>
-                </div>
-                <div class="column-two">
                         <input type="hidden" asp-for="IdFactura" />
                    
                         <input type="hidden" asp-for="NumeroFactura"   />
@@ -65,19 +66,21 @@
                 </div>
             </div>
            
-            <div class="form-group">
+            <div class="form-group" style="display: grid;
+    place-items: center; margin-top:20px">
                 
                 <button type="submit" value="Save" class="btn " style="background-color:green; color:white;">
                     Guardar factura
                 </button>
+                <div>
+                    <a asp-action="Index">Regresar</a>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Regresar</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
