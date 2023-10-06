@@ -4,38 +4,36 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>Factura</h4>
+    <h4>Detalle Factura</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NumeroFactura)
+            Número Factura
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NumeroFactura)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fecha)
+             Fecha
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Fecha)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TipodePago)
+            Método de pago
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TipodePago)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DocumentoCliente)
+             Documento Cliente
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DocumentoCliente)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreCliente)
+            Nombre Cliente
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NombreCliente)
@@ -59,13 +57,13 @@
             @Html.DisplayFor(model => model.Iva)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalDescuento)
+             Total Descuento
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TotalDescuento)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalImpuesto)
+             Total Impuesto
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TotalImpuesto)
@@ -79,6 +77,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdFactura">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.IdFactura">Editar</a> |
+    <a asp-action="Index">Regrear</a>
 </div>
